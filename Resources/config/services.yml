@@ -1,0 +1,12 @@
+imports:
+    - { resource: meteoblue.conf.yml }
+    - { resource: meteoblue.yml }
+
+services:
+    newscoop_meteoblue_plugin.lifecyclesubscriber:
+        class: Newscoop\MeteobluePluginBundle\EventListener\LifecycleSubscriber
+        arguments:
+            - @em
+        tags:
+            - { name: kernel.event_subscriber}
+

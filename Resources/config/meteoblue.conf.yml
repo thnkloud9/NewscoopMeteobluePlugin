@@ -1,0 +1,8 @@
+parameters:
+    meteoblue.baseurl: https://api.meteoblue.com/1.1
+
+    meteoblue.config:
+        consumer_key: S703unVY1spIdxugt6cjQ
+        consumer_secret: vNRs0uQAIhUHQBtBQLSnDpNEpYhDsfVvyPEco3q7m4 
+        token: 380994740-UsJZixK72BSaHHnzPTfKSqflLwau8BMfstrVLSkq
+        token_secret: OfsEJpt56MQqGsFJYsLQ9LCvKNYyI3YVHtkNkjkRSY

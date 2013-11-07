@@ -1,0 +1,15 @@
+parameters:
+    class.guzzle.response: Guzzle\Http\Message\Response
+    class.guzzle.client: Guzzle\Http\Client
+    class.guzzle.oauthplugin: Guzzle\Plugin\Oauth\OauthPlugin
+
+services:
+    guzzle.meteoblue.client:
+        class: %class.guzzle.client%
+        arguments: [%meteoblue.baseurl%]
+        calls:
+            - [addSubscriber, [@guzzle.meteoblue.oauthplugin]]
+
+    guzzle.meteoblue.oauthplugin:
+        class: %class.guzzle.oauthplugin%
+        arguments: [%meteoblue.config%]

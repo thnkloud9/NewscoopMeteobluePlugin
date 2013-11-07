@@ -1,0 +1,4 @@
+newscoop_meteoblue_plugin:
+    resource: "@NewscoopMeteobluePluginBundle/Controller/MeteoblueController.php"
+    type:     annotation
+    prefix:   /

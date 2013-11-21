@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class WetterController extends Controller
 {
     /**
-     * @Route("/wetter")
+     * @Route("/plugin/meteoblue/wetter")
      */
     public function indexAction(Request $request)
     {

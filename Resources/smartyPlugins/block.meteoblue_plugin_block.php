@@ -7,10 +7,10 @@
  */
 
 /**
- * Newscoop twitter_plugin block plugin
+ * Newscoop meteonews_plugin block plugin
  *
  * Type:     block
- * Name:     twitter_plugin
+ * Name:     meteonews_plugin
  * Purpose:  Displays latest tweets 
  *
  * @param string

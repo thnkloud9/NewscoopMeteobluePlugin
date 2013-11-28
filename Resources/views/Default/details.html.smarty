@@ -1,3 +1,15 @@
+{{ include file="_tpl/_html-head.tpl" inline }}
+
+<body>
+
+    <div id="wrapper">
+
+{{ include file="_werbung/wetter-header.tpl" }}
+
+{{ include file="_tpl/header-omnibox.tpl" }}
+
+{{ include file="_tpl/header.tpl" }}
+
 {{ assign var="ch_city" value=$smarty.get.city }}
 {{ if  empty($ch_city) }}{{ $ch_city = 'Basel' }}{{ /if }}
 
@@ -9,6 +21,24 @@
 {{ if $ch_city == "Bern" }}{{ assign var="citycode" value="bern_ch_449" }}{{ /if }}  
 {{ if $ch_city == "Genf" }}{{ assign var="citycode" value="genf_ch_1605" }}{{ /if }}
 {{ if $ch_city == "Lugano" }}{{ assign var="citycode" value="lugano_ch_2680" }}{{ /if }}    
-               
-<iframe src="http://www.meteoblue.com/de_DE/customer/tageswoche/index/{{ $citycode }}" height="1900" width="650" frameborder="0" scrolling="NO"></iframe><div><a href="http://www.meteoblue.com/de_DE/plugin/meteoblue/details/vorhersage/woche/{{ $citycode }}?utm_source=tageswoche&utm_medium=linkus&utm_campaign=CustomWidget" title="Wetter Basel - meteoblue" target="_blank">meteoblue.com</a></div>
 
+        <div class="content-box clearfix">
+
+            <section>        
+                <iframe src="http://www.meteoblue.com/de_DE/customer/tageswoche/index/{{ $citycode }}" height="1900" width="650" frameborder="0" scrolling="NO"></iframe><div><a href="http://www.meteoblue.com/de_DE/plugin/meteoblue/details/vorhersage/woche/{{ $citycode }}?utm_source=tageswoche&utm_medium=linkus&utm_campaign=CustomWidget" title="Wetter Basel - meteoblue" target="_blank">meteoblue.com</a></div>
+            </section>
+
+            <aside class="mobile-hide">
+                <p>ASIDE</p>
+            </aside>
+        </div>
+
+    </div><!-- / Wrapper -->
+
+    <div id="footer">
+
+{{ include file="_tpl/footer.tpl" }}
+
+    </div><!-- / Footer -->
+
+{{ include file="_tpl/_html-foot.tpl" }}

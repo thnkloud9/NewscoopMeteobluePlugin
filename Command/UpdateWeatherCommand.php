@@ -97,15 +97,41 @@ class UpdateWeatherCommand extends ContainerAwareCommand
         //var_dump($data);
         
         $todayKeys = array_keys($data, $date);
-        
+       
+        $em = $this->getDoctrine()->getManager();
+        $meteoblueStatRepo = $em->getRepository('Newscoop\MeteobluePluginBundle\Entity\MeteoblueStat');
+ 
         foreach ($todayKeys as $todayKey) {
             //$day = $data[$todayKey];
             $hour = $data[$todayKey + 2];
             $temperature = $data[$todayKey + 3];
             $icon = $icons[$data[$todayKey + 7]];
-            
-            \MeteoblueStat::set('weather_temperature_'.$hour, $temperature);
-            \MeteoblueStat::set('weather_icon_'.$hour, $icon);
+
+            // save the temp
+            if ($meteoblueStatRepo->countBy(array('option' => 'weather_temperature_'.$hour)) > 0) {
+                $tempStat = $em->getRepository('Newscoop\MeteobluePluginBundle\Entity\MeteoblueStat')
+                    ->findOneBy(array(
+                        'option' => 'weather_temperature_'.$hour,
+                    ));
+            } else {
+                $tempStat = new MeteoblueStat();
+                $tempStat->setOption('weather_temperature_'.$hour);
+            }
+            $tempStat->setValue($temperature);
+
+            // save the icon 
+            if ($meteoblueStatRepo->countBy(array('option' => 'weather_icon_'.$hour)) > 0) {
+                $iconStat = $em->getRepository('Newscoop\MeteobluePluginBundle\Entity\MeteoblueStat')
+                    ->findOneBy(array(
+                        'id' => 'weather_icon_'.$hour,
+                    ));
+            } else {
+                $iconStat = new MeteoblueStat();
+                $iconStat->setOption('weather_icon_'.$hour);
+            }
+            $iconStat->setValue($icon);
+
+            $em->flush();
         }
     }
 }

@@ -25,7 +25,7 @@ class WetterController extends Controller
      */
     public function detailsAction()
     {
-        return $this->render('NewscoopPaywallBundle:Default:details.html.smarty');
+        return $this->render('NewscoopMeteobluePluginBundle:Default:details.html.smarty');
     }
 
 

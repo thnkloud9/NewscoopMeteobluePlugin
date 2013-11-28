@@ -98,7 +98,7 @@ class UpdateWeatherCommand extends ContainerAwareCommand
         
         $todayKeys = array_keys($data, $date);
        
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getContainer()->get('doctrine')->getEntityManager();
         $meteoblueStatRepo = $em->getRepository('Newscoop\MeteobluePluginBundle\Entity\MeteoblueStat');
  
         foreach ($todayKeys as $todayKey) {

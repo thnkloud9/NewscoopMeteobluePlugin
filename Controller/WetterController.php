@@ -11,11 +11,22 @@ use Symfony\Component\HttpFoundation\Response;
 class WetterController extends Controller
 {
     /**
-     * @Route("/plugin/meteoblue/wetter")
+     * @Route("/plugin/meteoblue/header")
      */
-    public function indexAction(Request $request)
+    public function headerAction(Request $request)
     {
-        return $this->render('NewscoopMeteobluePluginBundle:Default:index.html.smarty');
+        return $this->render('NewscoopMeteobluePluginBundle:Default:header.html.smarty');
     }
+
+     /**
+     * Show details page 
+     * 
+     * @Route("/plugin/meteoblue/details")
+     */
+    public function detailsAction()
+    {
+        return $this->render('NewscoopPaywallBundle:Default:details.html.smarty');
+    }
+
 
 }

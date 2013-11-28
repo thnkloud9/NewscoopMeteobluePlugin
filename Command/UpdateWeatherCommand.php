@@ -5,7 +5,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-namespace Newscoop\Tools\Console\Command;
+namespace Newscoop\MeteobluePluginBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -26,12 +26,8 @@ class UpdateWeatherCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('UpdateWeather')
-            ->setDescription('Updates weather information.')
-            ->setHelp(<<<EOT
-Updates weather information.
-EOT
-        );
+            ->setName('weather:update')
+            ->setDescription('Updates weather information.');
     }
 
     /**

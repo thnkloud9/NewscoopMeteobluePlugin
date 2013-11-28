@@ -69,6 +69,8 @@ class LifecycleSubscriber implements EventSubscriberInterface
     }
 
     private function getClasses(){
-        return array();
+        return array(
+            $this->em->getClassMetadata('Newscoop\MeteobluePluginBundle\Entity\Meteobluestat'),
+        );
     }
 }

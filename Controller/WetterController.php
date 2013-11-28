@@ -15,11 +15,7 @@ class WetterController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-        $html = "<p>this is the weather</p>";
-
-        return new Response($html);
-
+        return $this->render('NewscoopMeteobluePluginBundle:Default:index.html.smarty');
     }
 
 }

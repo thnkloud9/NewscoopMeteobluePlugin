@@ -14,6 +14,7 @@ use Symfony\Component\Console;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use DateTime;
+use Newscoop\MeteobluePluginBundle\Entity\MeteoblueStat;
 
 /**
  * Update weather command
@@ -103,8 +104,8 @@ class UpdateWeatherCommand extends ContainerAwareCommand
             $temperature = $data[$todayKey + 3];
             $icon = $icons[$data[$todayKey + 7]];
             
-            \SystemPref::set('weather_temperature_'.$hour, $temperature);
-            \SystemPref::set('weather_icon_'.$hour, $icon);
+            \MeteoblueStat::set('weather_temperature_'.$hour, $temperature);
+            \MeteoblueStat::set('weather_icon_'.$hour, $icon);
         }
     }
 }

@@ -108,7 +108,7 @@ class UpdateWeatherCommand extends ContainerAwareCommand
             $icon = $icons[$data[$todayKey + 7]];
 
             // save the temp
-            $tempStat = $meteoblueStatRepo->findOneBy(array('option' => 'weather_temperature_'.$hour)) > 0) {
+            $tempStat = $meteoblueStatRepo->findOneBy(array('option' => 'weather_temperature_'.$hour);
             if (!$tempStat) {
                 $tempStat = new MeteoblueStat();
                 $tempStat->setOption('weather_temperature_'.$hour);
@@ -116,7 +116,7 @@ class UpdateWeatherCommand extends ContainerAwareCommand
             $tempStat->setValue($temperature);
 
             // save the icon 
-            $iconStat = $meteoblueStatRepo->countBy(array('option' => 'weather_icon_'.$hour)) > 0) {
+            $iconStat = $meteoblueStatRepo->countBy(array('option' => 'weather_icon_'.$hour);
             if (!$iconStat) {
                 $iconStat = new MeteoblueStat();
                 $iconStat->setOption('weather_icon_'.$hour);

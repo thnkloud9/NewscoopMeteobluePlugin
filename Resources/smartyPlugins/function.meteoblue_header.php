@@ -10,7 +10,7 @@
  * @param Smarty_Internal_Template $smarty
  * @return string
  */
-function smarty_function_weather(array $params, Smarty_Internal_Template $smarty)
+function smarty_function_meteoblue_header(array $params, Smarty_Internal_Template $smarty)
 {
     $hour = date('H');
     $container = \Zend_Registry::get('container');

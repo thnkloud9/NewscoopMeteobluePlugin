@@ -1,5 +1,4 @@
-{{ include file="_tpl/_html-head.tpl" inline }}
-
+<html>
 <body>
 
     <div id="wrapper">
@@ -25,5 +24,4 @@
         </div>
 
     </div><!-- / Wrapper -->
-
-{{ include file="_tpl/_html-foot.tpl" }}
+</html>

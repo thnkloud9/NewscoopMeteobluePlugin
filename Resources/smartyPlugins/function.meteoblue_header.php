@@ -21,12 +21,16 @@ function smarty_function_meteoblue_header(array $params, Smarty_Internal_Templat
     $tempStat = $meteoblueStatRepo->findOneBy(array('option' => 'weather_temperature_'.$hour));
     if ($tempStat) {
         $temperature = $tempStat->getValue();
+    } else {
+        $temperature = '';
     }
 
     // get icon
     $iconStat = $meteoblueStatRepo->findOneBy(array('option' => 'weather_icon_'.$hour));
     if ($iconStat) {
         $icon = $iconStat->getValue();
+    } else {
+        $icon = '';
     }
     
     $result = '<span class="'.$icon.'">'.$temperature.'°C Basel</span>';

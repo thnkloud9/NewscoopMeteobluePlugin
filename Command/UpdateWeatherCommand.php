@@ -77,10 +77,10 @@ class UpdateWeatherCommand extends ContainerAwareCommand
         
         $url = "http://www.meteoblue.com/apps/api/call/";
         $parameters = array(
-            'wrapkey' => '3575:51:ty29rggi6dancpx',
+            'apikey' => '3575:51:ty29rggi6dancpx',
             'mac' => 'feed',
             'paramtype' => 'datafeed',
-            'type' => 'simpleWeatherRain',
+            'type' => 'simpleWeather',
             'dt' => '1',
             'featID' => '376',
             'iso2' => 'ch'

@@ -72,9 +72,9 @@ class UpdateWeatherCommand extends ContainerAwareCommand
         $icons[33] = 'icon-weather-rain';
         $icons[34] = 'icon-weather-snow';
         $icons[35] = 'icon-weather-rain';
-        
+
         $date = date('d.m.Y');
-        
+
         $url = "http://my.meteoblue.com/dataApi/dispatch.pl";
         $parameters = array(
             'apikey' => '3575:51:ty29rggi6dancpx',
@@ -85,24 +85,22 @@ class UpdateWeatherCommand extends ContainerAwareCommand
             'featID' => '376',
             'iso2' => 'ch'
         );
-        
+
         $client = new \Zend_Http_Client($url);
         $client->setParameterGet($parameters);
         $body = $client->request()->getBody();
-        
+
         $body = str_replace("\r\n", "", $body);
         $body = str_replace("\n", "", $body);
-        
+
         $data = explode(';', $body);
-        //var_dump($data);
-        
+
         $todayKeys = array_keys($data, $date);
-       
+
         $em = $this->getContainer()->get('doctrine')->getManager();
         $meteoblueStatRepo = $em->getRepository('Newscoop\MeteobluePluginBundle\Entity\MeteoblueStat');
- 
+
         foreach ($todayKeys as $todayKey) {
-            //$day = $data[$todayKey];
             $hour = $data[$todayKey + 2];
             $temperature = $data[$todayKey + 3];
             $icon = $icons[$data[$todayKey + 7]];
@@ -112,21 +110,19 @@ class UpdateWeatherCommand extends ContainerAwareCommand
             if (!$tempStat) {
                 $tempStat = new MeteoblueStat();
                 $tempStat->setOption('weather_temperature_'.$hour);
-                $em->persist($tempStat);
-                $em->flush();
             }
             $tempStat->setValue($temperature);
+            $em->persist($tempStat);
             $em->flush();
 
-            // save the icon 
+            // save the icon
             $iconStat = $meteoblueStatRepo->findOneBy(array('option' => 'weather_icon_'.$hour));
             if (!$iconStat) {
                 $iconStat = new MeteoblueStat();
                 $iconStat->setOption('weather_icon_'.$hour);
-                $em->persist($iconStat);
-                $em->flush();
             }
             $iconStat->setValue($icon);
+            $em->persist($iconStat);
             $em->flush();
         }
     }
